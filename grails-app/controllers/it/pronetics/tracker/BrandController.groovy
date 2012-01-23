@@ -1,7 +1,7 @@
 package it.pronetics.tracker
 
-class RateProfileController {
+class BrandController {
 
     def scaffold = true
-    //def index() { }
+
 }
