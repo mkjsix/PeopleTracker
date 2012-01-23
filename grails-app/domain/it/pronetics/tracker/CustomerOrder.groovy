@@ -6,7 +6,8 @@ class CustomerOrder {
     Customer customer
     String orderName
     String projectName
-    RateProfile rateProfile
+    Brand company
+    ResourceRole resourceRole
     OrderStatus status
     DeliveryManager deliveryManager
     Boolean billable = false
@@ -15,11 +16,10 @@ class CustomerOrder {
     Integer remaining
     
     static embedded = {
-        ['orderId', 'customer', 'status', 'deliveryManager', 'rateProfile']
+        ['orderId', 'customer', 'status', 'deliveryManager', 'company', 'resourceRole']
     }
 
     static constraints = {
-        customer(nullable:true)
         orderName(blank:false)
     }
 }

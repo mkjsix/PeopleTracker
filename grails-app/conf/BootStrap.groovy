@@ -1,16 +1,13 @@
-import it.pronetics.tracker.OrderId
-import it.pronetics.tracker.DeliveryManager
-import it.pronetics.tracker.OrderStatus
-import it.pronetics.tracker.Customer
-import it.pronetics.tracker.Brand
-import it.pronetics.tracker.ResourceRole
+import it.pronetics.tracker.*
 
 class BootStrap {
+    
+    def static NOT_ASSIGNED = "NOT ASSIGNED"
 
     def init = { servletContext ->
          // Check whether the test data already exists.
         if (!OrderId.count()) {
-            new OrderId(value: "NOT ASSIGNED YET").save(failOnError: true)
+            new OrderId(value: NOT_ASSIGNED).save(failOnError: true)
             new OrderId(value: "No Project").save(failOnError: true)
             new OrderId(value: "ITINV-232").save(failOnError: true)
             new OrderId(value: "ITINV-710").save(failOnError: true)
@@ -29,20 +26,21 @@ class BootStrap {
             //new OrderId(value: "").save(failOnError: true)
         }
         if (!DeliveryManager.count()) {
-            new DeliveryManager(fullName:"NOT ASSIGNED YET").save(failOnError: true)
+            new DeliveryManager(fullName:NOT_ASSIGNED).save(failOnError: true)
             new DeliveryManager(fullName:"Roberto Manicardi").save(failOnError: true)
             new DeliveryManager(fullName:"Maurizio Turatti").save(failOnError: true)
             new DeliveryManager(fullName:"Fabio Paolucci").save(failOnError: true)
             new DeliveryManager(fullName:"Nigel Runnels-Moss").save(failOnError: true)         
         }
         if (!OrderStatus.count()) {
-            new OrderStatus(value:"IN PROGRESS").save(failOnError: true)
             new OrderStatus(value:"NOT STARTED").save(failOnError: true)
+            new OrderStatus(value:"IN PROGRESS").save(failOnError: true)      
             new OrderStatus(value:"COMPLETED").save(failOnError: true)
             new OrderStatus(value:"CANCELLED").save(failOnError: true)
             new OrderStatus(value:"*** UNKNOWN ***").save(failOnError: true)
         }
         if(!Customer.count()) {
+            new Customer(name:NOT_ASSIGNED).save(failOnError: true)
             new Customer(name:"Autogrill", nation:"IT").save(failOnError: true)
             new Customer(name:"Bocconi", nation:"IT").save(failOnError: true)
             new Customer(name:"Buongiorno", nation:"IT").save(failOnError: true)
@@ -69,11 +67,13 @@ class BootStrap {
             //new Customer(name:"", nation:"IT").save(failOnError: true)
         }
         if(!Brand.count()) {
+            new Brand(name: NOT_ASSIGNED).save(failOnError: true)
             new Brand(name: "Pro-Netics").save(failOnError: true)
             new Brand(name: "Sourcesense").save(failOnError: true)
             new Brand(name: "XPeppers").save(failOnError: true)
         }
         if (!ResourceRole.count()) {
+            new ResourceRole(name: NOT_ASSIGNED).save(failOnError: true)
             new ResourceRole(name: "junior consultant").save(failOnError: true)
             new ResourceRole(name: "consultant").save(failOnError: true)
             new ResourceRole(name: "senior consultant").save(failOnError: true)
@@ -82,9 +82,7 @@ class BootStrap {
             new ResourceRole(name: "team leader").save(failOnError: true)
             new ResourceRole(name: "trainer").save(failOnError: true)
         }
-        if (!RateProfile.count()) {
-            // TODO fixme
-        }
+
     }
     def destroy = {
     }
