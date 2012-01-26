@@ -67,10 +67,10 @@ class BootStrap {
             //new Customer(name:"", nation:"IT").save(failOnError: true)
         }
         if(!Brand.count()) {
-            new Brand(name: NOT_ASSIGNED).save(failOnError: true)
-            new Brand(name: "Pro-Netics").save(failOnError: true)
-            new Brand(name: "Sourcesense").save(failOnError: true)
-            new Brand(name: "XPeppers").save(failOnError: true)
+            new Brand(value: NOT_ASSIGNED).save(failOnError: true)
+            new Brand(value: "Pro-Netics").save(failOnError: true)
+            new Brand(value: "Sourcesense").save(failOnError: true)
+            new Brand(value: "XPeppers").save(failOnError: true)
         }
         if (!ResourceRole.count()) {
             new ResourceRole(name: NOT_ASSIGNED).save(failOnError: true)
